@@ -1,0 +1,13 @@
+/* Keyframes for the gradient animation */
+@keyframes gradient-pan {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.pane {
+  animation: gradient-pan var(--anim-time) linear infinite;
+}
