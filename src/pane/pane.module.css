@@ -1,0 +1,4 @@
+.pane {
+  overflow: auto;
+  box-sizing: border-box;
+}
