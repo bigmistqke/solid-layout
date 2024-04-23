@@ -6,7 +6,7 @@
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
-Side/Leaf Layout Manager for SolidJS. This package provides components to create flexible, resizable split views and terminal-like interfaces within your SolidJS applications. Ideal for developing sophisticated layouts in web applications, particularly where multiple views or panels are required to interact harmoniously.
+Pane Layout Component for SolidJS. This package provides components to create flexible, resizable split views and terminal-like interfaces within your SolidJS applications. Ideal for developing sophisticated layouts in web applications, particularly where multiple views or panels are required to interact harmoniously.
 
 https://github.com/bigmistqke/solid-layout/assets/10504064/5c83a375-7206-4e6e-a69f-44aa4032fcaa
 
@@ -52,10 +52,11 @@ export const App = () => (
 
 ### `<Layout/>`
 
-Root component of @bigmistqke/solid-layout used to initiate the layout structure.
+Root component of `@bigmistqke/solid-layout` used to initiate the layout structure.
 
 **Properties** [`SplitProps`](#splitprops)
 
+- `children`: Accepts `<Layout.Split/>` and `<Layout.Leaf>`.
 - `column`: If true, splits vertically (columns). Default is false (rows).
 - `flex`: flex-like value for the split pane.
 - `handleClass`: CSS class for the draggable splitter handle.
@@ -66,10 +67,11 @@ Root component of @bigmistqke/solid-layout used to initiate the layout structure
 
 ### `<Layout.Split/>`
 
-A container that divides its child components (either further splits or leafs) into resizable sections either horizontally or vertically.
+A container that divides its child components (either `Layout.Split` or `Layout.Leaf`) into resizable sections either horizontally or vertically.
 
 **Properties** [`SplitProps`](#splitprops)
 
+- `children`: Accepts `<Layout.Split/>` and `<Layout.Leaf>`.
 - `column`: If true, splits vertically (columns). Default is false (rows).
 - `flex`: flex-like value for the split pane.
 - `handleClass`: CSS class for the draggable splitter handle.
@@ -90,10 +92,11 @@ type Component<LeafProps>
 
 **Properties** [`LeafProps`](#leafprops)
 
-- flex: Flex-grow value for the pane.
-- max: Maximum size of the pane in pixels.
-- min: Minimum size of the pane in pixels.
-- style: CSSProperties to apply custom styles to the pane.
+- `children`: Accepts any `JSX.Element`.
+- `flex`: Flex-grow value for the pane.
+- `max`: Maximum size of the pane in pixels.
+- `min`: Minimum size of the pane in pixels.
+- `style`: CSSProperties to apply custom styles to the pane.
 
 ## Types
 
@@ -116,7 +119,7 @@ type SplitProps = Omit<ComponentProps<'div'>, 'children' | 'style'> & {
 
 ```tsx
 type LeafProps = Omit<ComponentProps<'div'>, 'children' | 'style'> & {
-  children: JSX.Element[]
+  children: JSX.Element[] // Should not be Layout.Split || Layout.Leaf
   flex?: number
   max?: number
   min?: number
