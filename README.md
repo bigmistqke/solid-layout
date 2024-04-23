@@ -84,12 +84,6 @@ A container that divides its child components (either `Layout.Split` or `Layout.
 
 A leaf-pane that can be placed within a split to provide a contained UI section, similar to a panel or frame in desktop interfaces.
 
-**Signature**
-
-```tsx
-type Component<LeafProps>
-```
-
 **Properties** [`LeafProps`](#leafprops)
 
 - `children`: Accepts any `JSX.Element`.
