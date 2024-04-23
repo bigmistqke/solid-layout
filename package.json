@@ -1,7 +1,7 @@
 {
   "name": "@bigmistqke/solid-layout",
   "version": "0.0.0",
-  "description": "Side/Terminal Layout Manager for SolidJS",
+  "description": "Pane Layout Manager for SolidJS",
   "license": "MIT",
   "author": "@bigmistqke",
   "contributors": [],

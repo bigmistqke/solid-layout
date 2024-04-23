@@ -9,5 +9,5 @@
 }
 
 .pane {
-  animation: gradient-pan var(--anim-time) linear infinite;
+  /* animation: gradient-pan var(--anim-time) linear infinite; */
 }

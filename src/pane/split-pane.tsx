@@ -16,8 +16,8 @@ import {
 import { JSX } from 'solid-js/jsx-runtime'
 import { SetStoreFunction, createStore } from 'solid-js/store'
 import { Mandatory, Merge } from '../utils'
+import { LeafPane } from './leaf-pane'
 import { Pane, PaneProps } from './pane'
-import { TerminalPane } from './terminal-pane'
 
 import styles from './pane.module.css'
 
@@ -86,7 +86,7 @@ export class SplitPane extends Pane {
 
     createEffect(() => {
       this.panes().forEach(pane => {
-        if (pane instanceof TerminalPane) {
+        if (pane instanceof LeafPane) {
           pane.setOrientation(props.column ? 'column' : 'row')
         }
       })

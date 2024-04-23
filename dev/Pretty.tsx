@@ -1,5 +1,5 @@
 import { untrack } from 'solid-js/web'
-import { Layout } from '../src/index'
+import { Layout } from '../src'
 
 import styles from './Pretty.module.css'
 
@@ -7,10 +7,10 @@ const coinFlip = (chance = 0.5) => Math.random() > chance
 
 const color = () => `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`
 const gradient = () => `linear-gradient(${Math.random() * 360}deg, ${color()}, ${color()})`
-type Terminal = { type: 'Terminal'; background: string }
+type Leaf = { type: 'Leaf'; background: string }
 type Split = {
   type: 'Split'
-  children: (Split | Terminal)[]
+  children: (Split | Leaf)[]
   column: boolean
   handleColor: string
 }
@@ -27,13 +27,13 @@ const createRandomPaneData = () =>
         }
       })()
     : {
-        type: 'Terminal',
+        type: 'Leaf',
         background: gradient(),
-      }) satisfies Split | Terminal
+      }) satisfies Split | Leaf
 
 const createRandomLayoutData = () => {
   const recurse = (object: Split, depth: number) => {
-    if (depth > 4 || (depth > 2 && coinFlip(0.8))) return object
+    if (depth > 10 || (depth > 5 && coinFlip(0.8))) return object
 
     const length = Math.floor(Math.random() * 5 + 2)
     for (let i = 0; i < length; i++) {
@@ -62,9 +62,9 @@ const createRandomLayoutData = () => {
 
 const createRandomLayout = (data: ReturnType<typeof createRandomLayoutData>) => {
   const animTime = `${Math.floor(Math.random() * 10 + 10)}s`
-  const dataToComponent = (data: Terminal | Split) =>
-    data.type === 'Terminal' ? (
-      <Layout.Terminal
+  const dataToComponent = (data: Leaf | Split) =>
+    data.type === 'Leaf' ? (
+      <Layout.Leaf
         style={{
           background: data.background,
           '--anim-time': animTime,

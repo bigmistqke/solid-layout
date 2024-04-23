@@ -6,7 +6,7 @@
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
-Side/Terminal Layout Manager for SolidJS. This package provides components to create flexible, resizable split views and terminal-like interfaces within your SolidJS applications. Ideal for developing sophisticated layouts in web applications, particularly where multiple views or panels are required to interact harmoniously.
+Side/Leaf Layout Manager for SolidJS. This package provides components to create flexible, resizable split views and terminal-like interfaces within your SolidJS applications. Ideal for developing sophisticated layouts in web applications, particularly where multiple views or panels are required to interact harmoniously.
 
 ## Features
 
@@ -35,12 +35,12 @@ import { Layout } from '@bigmistqke/solid-layout'
 export const App = () => (
   <Layout style={{ height: '100vh', width: '100vw' }}>
     <Layout.Split column>
-      <Layout.Terminal flex={0.2} />
-      <Layout.Terminal min={50} max={500} />
+      <Layout.Leaf flex={0.2} />
+      <Layout.Leaf min={50} max={500} />
     </Layout.Split>
-    <Layout.Split>
-      <Layout.Terminal style={{ background: 'red' }} />
-      <Layout.Terminal style={{ background: 'blue' }} />
+    <Layout.Split handle>
+      <Layout.Leaf style={{ background: 'red' }} />
+      <Layout.Leaf style={{ background: 'blue' }} />
     </Layout.Split>
   </Layout>
 )
@@ -58,13 +58,13 @@ Root component of @bigmistqke/solid-layout used to initiate the layout structure
 - `flex`: flex-like value for the split pane.
 - `handleClass`: CSS class for the draggable splitter handle.
 - `handleStyle`: Inline styles for the draggable splitter handle.
-- `max`: Maximum size of the terminal in pixels.
-- `min`: Minimum size of the terminal in pixels.
+- `max`: Maximum size of the pane in pixels.
+- `min`: Minimum size of the pane in pixels.
 - `style`: CSSProperties to apply custom styles to the split pane.
 
 ### `<Layout.Split/>`
 
-A container that divides its child components (either further splits or terminals) into resizable sections either horizontally or vertically.
+A container that divides its child components (either further splits or leafs) into resizable sections either horizontally or vertically.
 
 **Properties** [`SplitProps`](#splitprops)
 
@@ -72,26 +72,26 @@ A container that divides its child components (either further splits or terminal
 - `flex`: flex-like value for the split pane.
 - `handleClass`: CSS class for the draggable splitter handle.
 - `handleStyle`: Inline styles for the draggable splitter handle.
-- `max`: Maximum size of the terminal in pixels.
-- `min`: Minimum size of the terminal in pixels.
+- `max`: Maximum size of the pane in pixels.
+- `min`: Minimum size of the pane in pixels.
 - `style`: CSSProperties to apply custom styles to the split pane.
 
-### `<Layout.Terminal/>`
+### `<Layout.Leaf/>`
 
-A terminal-pane that can be placed within a split to provide a contained UI section, similar to a panel or frame in desktop interfaces.
+A leaf-pane that can be placed within a split to provide a contained UI section, similar to a panel or frame in desktop interfaces.
 
 **Signature**
 
 ```tsx
-type Component<TerminalProps>
+type Component<LeafProps>
 ```
 
-**Properties** [`TerminalProps`](#terminalprops)
+**Properties** [`LeafProps`](#leafprops)
 
-- flex: Flex-grow value for the terminal.
-- max: Maximum size of the terminal in pixels.
-- min: Minimum size of the terminal in pixels.
-- style: CSSProperties to apply custom styles to the terminal.
+- flex: Flex-grow value for the pane.
+- max: Maximum size of the pane in pixels.
+- min: Minimum size of the pane in pixels.
+- style: CSSProperties to apply custom styles to the pane.
 
 ## Types
 
@@ -99,7 +99,7 @@ type Component<TerminalProps>
 
 ```tsx
 type SplitProps = Omit<ComponentProps<'div'>, 'children' | 'style'> & {
-  children: JSX.Element[] // Needs to be Layout.Split || Layout.Terminal
+  children: JSX.Element[] // Needs to be Layout.Split || Layout.Leaf
   column?: boolean
   flex?: number
   handleClass?: string
@@ -110,10 +110,10 @@ type SplitProps = Omit<ComponentProps<'div'>, 'children' | 'style'> & {
 }
 ```
 
-### `TerminalProps`
+### `LeafProps`
 
 ```tsx
-type TerminalProps = Omit<ComponentProps<'div'>, 'children' | 'style'> & {
+type LeafProps = Omit<ComponentProps<'div'>, 'children' | 'style'> & {
   children: JSX.Element[]
   flex?: number
   max?: number
