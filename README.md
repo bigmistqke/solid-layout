@@ -2,11 +2,13 @@
   <img width="100%" src="https://assets.solidjs.com/banner?type=@bigmistqke/solid-layout&background=tiles&project=%20" alt="@bigmistqke/solid-layout">
 </p>
 
-# @bigmistqke/solid-layout
+# 🖼️ @bigmistqke/solid-layout
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
 Side/Leaf Layout Manager for SolidJS. This package provides components to create flexible, resizable split views and terminal-like interfaces within your SolidJS applications. Ideal for developing sophisticated layouts in web applications, particularly where multiple views or panels are required to interact harmoniously.
+
+https://github.com/bigmistqke/solid-layout/assets/10504064/5c83a375-7206-4e6e-a69f-44aa4032fcaa
 
 ## Features
 
